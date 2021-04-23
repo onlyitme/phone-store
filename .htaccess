@@ -1,0 +1,37 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine on #Lệnh chuyển địa chỉ (on/off)
+RewriteRule ^$ site/?act=home
+RewriteRule ^phone-store$ site/?act=home
+RewriteRule ^phone-store/$ site/?act=home
+RewriteRule ^tim-kiem/$ site/?act=search
+RewriteRule ^gui-binh-luan/$ site/?act=comment
+RewriteRule ^dang-nhap/$ site/?act=login
+RewriteRule ^doi-pass/$ site/?act=changepw
+RewriteRule ^quen-mat-khau/$ site/?act=forgotpw
+RewriteRule ^tat-ca-san-pham/$ site/?act=cat
+RewriteRule ^tat-ca-san-pham/trang-(.*) site/?act=cat&page_num=$1
+RewriteRule ^chi-tiet-san-pham/(.*)$ site/?act=detail&id=$1
+RewriteRule ^sp/(.*)$ site/?act=detail&id=$1
+RewriteRule ^nsx/(.*)$ site/?act=cat&id=$1
+RewriteRule ^gio-hang/$ site/?act=cartview
+RewriteRule ^them-vao-gio/(.*)$ site/?act=cart&what=add&id=$1
+RewriteRule ^cap-nhat-gio-hang/$ site/?act=cartview&what=update
+RewriteRule ^xoa-san-pham/(.*)$ site/?act=cart&what=remove&id=$1
+RewriteRule ^xoa-gio-hang/(.*)$ site/?act=cart&what=removeAll
+RewriteRule ^thanh-toan/$ site/?act=checkout
+RewriteRule ^hoan-tat-thanh-toan/$ site/?act=checkout
+
+
+#Lỗi
+RewriteRule ^warning-access/$ site/?act=message&error=1099
+RewriteRule ^success-password/$ site/?act=message&error=100
+RewriteRule ^success-send-email/$ site/?act=message&error=101
+RewriteRule ^warning-your-inf/$ site/?act=message&error=102
+RewriteRule ^does-not-exist/$ site/?act=message&error=103
+
+
+#RewriteRule ^([^\.]+)$ $1.php [NC,L] #xóa phần đuôi
+#Lỗi -> Chạy trang báo lỗi
+ErrorDocument 404 /php-2/asm/pages-404.html
+#ErrorDocument 403 /php-2/asm/pages-404.html
